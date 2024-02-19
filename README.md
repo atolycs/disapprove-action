@@ -1,4 +1,24 @@
-# My Github Action Template Repository
+# Disapprove Pull Request Action
+
+My custom Disapprove Pull request action
+
+
+- inputs
+    * `token`
+        * Generated Github App Token
+        * default: `${{ github.token }}`
+    * `pr_number`
+        * Trigger Pull Request Number
+        * default: `${{ github.event.number }}`
+        * optional: yes
+    * `message`
+        * Disapprove Message
+        * default: `This pull request isi not approved`
+    * `bot-mode`
+        * Boolean Comment is bot?
+        * default: `true`
+
+    
 
 - Directory Style
 

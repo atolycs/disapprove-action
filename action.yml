@@ -11,6 +11,8 @@ inputs:
   token:
     description: "Github token"
     required: true
+    default: ${{ github.token }}
+    
   pr_number:
     description: "Pull request number"
     required: false
