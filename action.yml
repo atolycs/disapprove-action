@@ -1,0 +1,29 @@
+name: "Disapprove Pull Request"
+description: "Disapprove a pull request"
+
+author: "Atolycs"
+
+branding:
+  icon: git-pull-request
+  color: red
+
+inputs:
+  token:
+    description: "Github token"
+    required: true
+  pr_number:
+    description: "Pull request number"
+    required: false
+    default: ${{ github.event.number }}
+  message:
+    description: "Message to disapprove"
+    required: false
+    default: "This pull request is not approved"
+  bot-mode:
+    description: "Enable bot mode"
+    required: false
+    default: "true"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"

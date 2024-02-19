@@ -5,7 +5,7 @@ import github from "@actions/github"
 async function run() {
   try {
     const token = core.getInput("token", { required: true })
-    const bot_mode = core.getBooleanInput("bot_mode", { required: false })
+    const bot_mode = core.getBooleanInput("bot-mode", { required: false })
     const message = core.getInput("message", { required: true })
     const context = github.context
 

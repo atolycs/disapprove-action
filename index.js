@@ -1,3 +1,3 @@
-const { run } = require("./dist/main.js") 
+const { run } = require("./src/main.js") 
 
 run()
