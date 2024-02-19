@@ -4,12 +4,9 @@ module.exports = {
     node: true,
   },
   plugins: [
-    "jest"
   ],
   extends: [
     "eslint:recommended",
-    "plugin:jest/recommended",
-    "plugin:jest/style"
   ],
   overrides: [
     {
