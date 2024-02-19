@@ -12,15 +12,17 @@ inputs:
     description: "Github token"
     required: true
     default: ${{ github.token }}
-    
+
   pr_number:
     description: "Pull request number"
     required: false
     default: ${{ github.event.number }}
+
   message:
     description: "Message to disapprove"
     required: false
     default: "This pull request is not approved"
+
   bot-mode:
     description: "Enable bot mode"
     required: false
