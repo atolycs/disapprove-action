@@ -1,6 +1,7 @@
 {
   "name": "github-action-template",
   "version": "1.0.0",
+  "type": "module",
   "description": "Github Action Template for Node.js",
   "main": "index.js",
   "scripts": {

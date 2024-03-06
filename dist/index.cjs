@@ -22886,8 +22886,8 @@ var require_github = __commonJS({
 });
 
 // index.js
-var import_core = __toESM(require_core());
-var import_github = __toESM(require_github());
+var import_core = __toESM(require_core(), 1);
+var import_github = __toESM(require_github(), 1);
 
 // src/main.js
 async function run(core2, octokit2, context2, message2) {
