@@ -100,24 +100,24 @@ var require_command = __commonJS({
     exports2.issue = exports2.issueCommand = void 0;
     var os = __importStar(require("os"));
     var utils_1 = require_utils();
-    function issueCommand(command, properties, message) {
-      const cmd = new Command(command, properties, message);
+    function issueCommand(command, properties, message2) {
+      const cmd = new Command(command, properties, message2);
       process.stdout.write(cmd.toString() + os.EOL);
     }
     exports2.issueCommand = issueCommand;
-    function issue(name, message = "") {
-      issueCommand(name, {}, message);
+    function issue(name, message2 = "") {
+      issueCommand(name, {}, message2);
     }
     exports2.issue = issue;
     var CMD_STRING = "::";
     var Command = class {
-      constructor(command, properties, message) {
+      constructor(command, properties, message2) {
         if (!command) {
           command = "missing.command";
         }
         this.command = command;
         this.properties = properties;
-        this.message = message;
+        this.message = message2;
       }
       toString() {
         let cmdStr = CMD_STRING + this.command;
@@ -522,7 +522,7 @@ var require_file_command = __commonJS({
     var os = __importStar(require("os"));
     var uuid_1 = (init_esm_node(), __toCommonJS(esm_node_exports));
     var utils_1 = require_utils();
-    function issueFileCommand(command, message) {
+    function issueFileCommand(command, message2) {
       const filePath = process.env[`GITHUB_${command}`];
       if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
@@ -530,7 +530,7 @@ var require_file_command = __commonJS({
       if (!fs.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
       }
-      fs.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+      fs.appendFileSync(filePath, `${utils_1.toCommandValue(message2)}${os.EOL}`, {
         encoding: "utf8"
       });
     }
@@ -930,54 +930,54 @@ var require_errors = __commonJS({
   "node_modules/undici/lib/core/errors.js"(exports2, module2) {
     "use strict";
     var UndiciError = class extends Error {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         this.name = "UndiciError";
         this.code = "UND_ERR";
       }
     };
     var ConnectTimeoutError = class _ConnectTimeoutError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _ConnectTimeoutError);
         this.name = "ConnectTimeoutError";
-        this.message = message || "Connect Timeout Error";
+        this.message = message2 || "Connect Timeout Error";
         this.code = "UND_ERR_CONNECT_TIMEOUT";
       }
     };
     var HeadersTimeoutError = class _HeadersTimeoutError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _HeadersTimeoutError);
         this.name = "HeadersTimeoutError";
-        this.message = message || "Headers Timeout Error";
+        this.message = message2 || "Headers Timeout Error";
         this.code = "UND_ERR_HEADERS_TIMEOUT";
       }
     };
     var HeadersOverflowError = class _HeadersOverflowError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _HeadersOverflowError);
         this.name = "HeadersOverflowError";
-        this.message = message || "Headers Overflow Error";
+        this.message = message2 || "Headers Overflow Error";
         this.code = "UND_ERR_HEADERS_OVERFLOW";
       }
     };
     var BodyTimeoutError = class _BodyTimeoutError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _BodyTimeoutError);
         this.name = "BodyTimeoutError";
-        this.message = message || "Body Timeout Error";
+        this.message = message2 || "Body Timeout Error";
         this.code = "UND_ERR_BODY_TIMEOUT";
       }
     };
     var ResponseStatusCodeError = class _ResponseStatusCodeError extends UndiciError {
-      constructor(message, statusCode, headers, body) {
-        super(message);
+      constructor(message2, statusCode, headers, body) {
+        super(message2);
         Error.captureStackTrace(this, _ResponseStatusCodeError);
         this.name = "ResponseStatusCodeError";
-        this.message = message || "Response Status Code Error";
+        this.message = message2 || "Response Status Code Error";
         this.code = "UND_ERR_RESPONSE_STATUS_CODE";
         this.body = body;
         this.status = statusCode;
@@ -986,108 +986,108 @@ var require_errors = __commonJS({
       }
     };
     var InvalidArgumentError = class _InvalidArgumentError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _InvalidArgumentError);
         this.name = "InvalidArgumentError";
-        this.message = message || "Invalid Argument Error";
+        this.message = message2 || "Invalid Argument Error";
         this.code = "UND_ERR_INVALID_ARG";
       }
     };
     var InvalidReturnValueError = class _InvalidReturnValueError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _InvalidReturnValueError);
         this.name = "InvalidReturnValueError";
-        this.message = message || "Invalid Return Value Error";
+        this.message = message2 || "Invalid Return Value Error";
         this.code = "UND_ERR_INVALID_RETURN_VALUE";
       }
     };
     var RequestAbortedError = class _RequestAbortedError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _RequestAbortedError);
         this.name = "AbortError";
-        this.message = message || "Request aborted";
+        this.message = message2 || "Request aborted";
         this.code = "UND_ERR_ABORTED";
       }
     };
     var InformationalError = class _InformationalError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _InformationalError);
         this.name = "InformationalError";
-        this.message = message || "Request information";
+        this.message = message2 || "Request information";
         this.code = "UND_ERR_INFO";
       }
     };
     var RequestContentLengthMismatchError = class _RequestContentLengthMismatchError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _RequestContentLengthMismatchError);
         this.name = "RequestContentLengthMismatchError";
-        this.message = message || "Request body length does not match content-length header";
+        this.message = message2 || "Request body length does not match content-length header";
         this.code = "UND_ERR_REQ_CONTENT_LENGTH_MISMATCH";
       }
     };
     var ResponseContentLengthMismatchError = class _ResponseContentLengthMismatchError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _ResponseContentLengthMismatchError);
         this.name = "ResponseContentLengthMismatchError";
-        this.message = message || "Response body length does not match content-length header";
+        this.message = message2 || "Response body length does not match content-length header";
         this.code = "UND_ERR_RES_CONTENT_LENGTH_MISMATCH";
       }
     };
     var ClientDestroyedError = class _ClientDestroyedError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _ClientDestroyedError);
         this.name = "ClientDestroyedError";
-        this.message = message || "The client is destroyed";
+        this.message = message2 || "The client is destroyed";
         this.code = "UND_ERR_DESTROYED";
       }
     };
     var ClientClosedError = class _ClientClosedError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _ClientClosedError);
         this.name = "ClientClosedError";
-        this.message = message || "The client is closed";
+        this.message = message2 || "The client is closed";
         this.code = "UND_ERR_CLOSED";
       }
     };
     var SocketError = class _SocketError extends UndiciError {
-      constructor(message, socket) {
-        super(message);
+      constructor(message2, socket) {
+        super(message2);
         Error.captureStackTrace(this, _SocketError);
         this.name = "SocketError";
-        this.message = message || "Socket error";
+        this.message = message2 || "Socket error";
         this.code = "UND_ERR_SOCKET";
         this.socket = socket;
       }
     };
     var NotSupportedError = class _NotSupportedError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _NotSupportedError);
         this.name = "NotSupportedError";
-        this.message = message || "Not supported error";
+        this.message = message2 || "Not supported error";
         this.code = "UND_ERR_NOT_SUPPORTED";
       }
     };
     var BalancedPoolMissingUpstreamError = class extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, NotSupportedError);
         this.name = "MissingUpstreamError";
-        this.message = message || "No upstream has been added to the BalancedPool";
+        this.message = message2 || "No upstream has been added to the BalancedPool";
         this.code = "UND_ERR_BPL_MISSING_UPSTREAM";
       }
     };
     var HTTPParserError = class _HTTPParserError extends Error {
-      constructor(message, code, data) {
-        super(message);
+      constructor(message2, code, data) {
+        super(message2);
         Error.captureStackTrace(this, _HTTPParserError);
         this.name = "HTTPParserError";
         this.code = code ? `HPE_${code}` : void 0;
@@ -1095,20 +1095,20 @@ var require_errors = __commonJS({
       }
     };
     var ResponseExceededMaxSizeError = class _ResponseExceededMaxSizeError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _ResponseExceededMaxSizeError);
         this.name = "ResponseExceededMaxSizeError";
-        this.message = message || "Response content exceeded max size";
+        this.message = message2 || "Response content exceeded max size";
         this.code = "UND_ERR_RES_EXCEEDED_MAX_SIZE";
       }
     };
     var RequestRetryError = class _RequestRetryError extends UndiciError {
-      constructor(message, code, { headers, data }) {
-        super(message);
+      constructor(message2, code, { headers, data }) {
+        super(message2);
         Error.captureStackTrace(this, _RequestRetryError);
         this.name = "RequestRetryError";
-        this.message = message || "Request retry error";
+        this.message = message2 || "Request retry error";
         this.code = "UND_ERR_REQ_RETRY";
         this.statusCode = code;
         this.data = data;
@@ -3938,9 +3938,9 @@ var require_util2 = __commonJS({
       let policy = "";
       if (policyHeader.length > 0) {
         for (let i = policyHeader.length; i !== 0; i--) {
-          const token = policyHeader[i - 1].trim();
-          if (referrerPolicyTokens.has(token)) {
-            policy = token;
+          const token2 = policyHeader[i - 1].trim();
+          if (referrerPolicyTokens.has(token2)) {
+            policy = token2;
             break;
           }
         }
@@ -4147,9 +4147,9 @@ var require_util2 = __commonJS({
       const result = [];
       let empty = true;
       const supportedHashes = crypto4.getHashes();
-      for (const token of metadata.split(" ")) {
+      for (const token2 of metadata.split(" ")) {
         empty = false;
-        const parsedToken = parseHashWithOptions.exec(token);
+        const parsedToken = parseHashWithOptions.exec(token2);
         if (parsedToken === null || parsedToken.groups === void 0) {
           continue;
         }
@@ -4416,21 +4416,21 @@ var require_webidl = __commonJS({
     webidl.converters = {};
     webidl.util = {};
     webidl.errors = {};
-    webidl.errors.exception = function(message) {
-      return new TypeError(`${message.header}: ${message.message}`);
+    webidl.errors.exception = function(message2) {
+      return new TypeError(`${message2.header}: ${message2.message}`);
     };
-    webidl.errors.conversionFailed = function(context) {
-      const plural = context.types.length === 1 ? "" : " one of";
-      const message = `${context.argument} could not be converted to${plural}: ${context.types.join(", ")}.`;
+    webidl.errors.conversionFailed = function(context2) {
+      const plural = context2.types.length === 1 ? "" : " one of";
+      const message2 = `${context2.argument} could not be converted to${plural}: ${context2.types.join(", ")}.`;
       return webidl.errors.exception({
-        header: context.prefix,
-        message
+        header: context2.prefix,
+        message: message2
       });
     };
-    webidl.errors.invalidArgument = function(context) {
+    webidl.errors.invalidArgument = function(context2) {
       return webidl.errors.exception({
-        header: context.prefix,
-        message: `"${context.value}" is an invalid ${context.type}.`
+        header: context2.prefix,
+        message: `"${context2.value}" is an invalid ${context2.type}.`
       });
     };
     webidl.brandCheck = function(V, I, opts = void 0) {
@@ -7565,12 +7565,12 @@ var require_client = __commonJS({
             socket.unshift(data.slice(offset));
           } else if (ret !== constants.ERROR.OK) {
             const ptr = llhttp.llhttp_get_error_reason(this.ptr);
-            let message = "";
+            let message2 = "";
             if (ptr) {
               const len = new Uint8Array(llhttp.memory.buffer, ptr).indexOf(0);
-              message = "Response does not match the HTTP/1.1 protocol (" + Buffer.from(llhttp.memory.buffer, ptr, len).toString() + ")";
+              message2 = "Response does not match the HTTP/1.1 protocol (" + Buffer.from(llhttp.memory.buffer, ptr, len).toString() + ")";
             }
-            throw new HTTPParserError(message, constants.ERROR[ret], data.slice(offset));
+            throw new HTTPParserError(message2, constants.ERROR[ret], data.slice(offset));
           }
         } catch (err) {
           util.destroy(socket, err);
@@ -9751,15 +9751,15 @@ var require_api_request = __commonJS({
         }
         addSignal(this, signal);
       }
-      onConnect(abort, context) {
+      onConnect(abort, context2) {
         if (!this.callback) {
           throw new RequestAbortedError();
         }
         this.abort = abort;
-        this.context = context;
+        this.context = context2;
       }
       onHeaders(statusCode, rawHeaders, resume, statusMessage) {
-        const { callback, opaque, abort, context, responseHeaders, highWaterMark } = this;
+        const { callback, opaque, abort, context: context2, responseHeaders, highWaterMark } = this;
         const headers = responseHeaders === "raw" ? util.parseRawHeaders(rawHeaders) : util.parseHeaders(rawHeaders);
         if (statusCode < 200) {
           if (this.onInfo) {
@@ -9786,7 +9786,7 @@ var require_api_request = __commonJS({
               trailers: this.trailers,
               opaque,
               body,
-              context
+              context: context2
             });
           }
         }
@@ -9906,15 +9906,15 @@ var require_api_stream = __commonJS({
         }
         addSignal(this, signal);
       }
-      onConnect(abort, context) {
+      onConnect(abort, context2) {
         if (!this.callback) {
           throw new RequestAbortedError();
         }
         this.abort = abort;
-        this.context = context;
+        this.context = context2;
       }
       onHeaders(statusCode, rawHeaders, resume, statusMessage) {
-        const { factory, opaque, context, callback, responseHeaders } = this;
+        const { factory, opaque, context: context2, callback, responseHeaders } = this;
         const headers = responseHeaders === "raw" ? util.parseRawHeaders(rawHeaders) : util.parseHeaders(rawHeaders);
         if (statusCode < 200) {
           if (this.onInfo) {
@@ -9942,7 +9942,7 @@ var require_api_stream = __commonJS({
             statusCode,
             headers,
             opaque,
-            context
+            context: context2
           });
           if (!res || typeof res.write !== "function" || typeof res.end !== "function" || typeof res.on !== "function") {
             throw new InvalidReturnValueError("expected Writable");
@@ -10134,17 +10134,17 @@ var require_api_pipeline = __commonJS({
         this.res = null;
         addSignal(this, signal);
       }
-      onConnect(abort, context) {
+      onConnect(abort, context2) {
         const { ret, res } = this;
         assert(!res, "pipeline cannot be retried");
         if (ret.destroyed) {
           throw new RequestAbortedError();
         }
         this.abort = abort;
-        this.context = context;
+        this.context = context2;
       }
       onHeaders(statusCode, rawHeaders, resume) {
-        const { opaque, handler, context } = this;
+        const { opaque, handler, context: context2 } = this;
         if (statusCode < 200) {
           if (this.onInfo) {
             const headers = this.responseHeaders === "raw" ? util.parseRawHeaders(rawHeaders) : util.parseHeaders(rawHeaders);
@@ -10162,7 +10162,7 @@ var require_api_pipeline = __commonJS({
             headers,
             opaque,
             body: this.res,
-            context
+            context: context2
           });
         } catch (err) {
           this.res.on("error", util.nop);
@@ -10246,7 +10246,7 @@ var require_api_upgrade = __commonJS({
         this.context = null;
         addSignal(this, signal);
       }
-      onConnect(abort, context) {
+      onConnect(abort, context2) {
         if (!this.callback) {
           throw new RequestAbortedError();
         }
@@ -10257,7 +10257,7 @@ var require_api_upgrade = __commonJS({
         throw new SocketError("bad upgrade", null);
       }
       onUpgrade(statusCode, rawHeaders, socket) {
-        const { callback, opaque, context } = this;
+        const { callback, opaque, context: context2 } = this;
         assert.strictEqual(statusCode, 101);
         removeSignal(this);
         this.callback = null;
@@ -10266,7 +10266,7 @@ var require_api_upgrade = __commonJS({
           headers,
           socket,
           opaque,
-          context
+          context: context2
         });
       }
       onError(err) {
@@ -10334,18 +10334,18 @@ var require_api_connect = __commonJS({
         this.abort = null;
         addSignal(this, signal);
       }
-      onConnect(abort, context) {
+      onConnect(abort, context2) {
         if (!this.callback) {
           throw new RequestAbortedError();
         }
         this.abort = abort;
-        this.context = context;
+        this.context = context2;
       }
       onHeaders() {
         throw new SocketError("bad connect", null);
       }
       onUpgrade(statusCode, rawHeaders, socket) {
-        const { callback, opaque, context } = this;
+        const { callback, opaque, context: context2 } = this;
         removeSignal(this);
         this.callback = null;
         let headers = rawHeaders;
@@ -10357,7 +10357,7 @@ var require_api_connect = __commonJS({
           headers,
           socket,
           opaque,
-          context
+          context: context2
         });
       }
       onError(err) {
@@ -10412,11 +10412,11 @@ var require_mock_errors = __commonJS({
     "use strict";
     var { UndiciError } = require_errors();
     var MockNotMatchedError = class _MockNotMatchedError extends UndiciError {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         Error.captureStackTrace(this, _MockNotMatchedError);
         this.name = "MockNotMatchedError";
-        this.message = message || "The request does not match any registered mock dispatches";
+        this.message = message2 || "The request does not match any registered mock dispatches";
         this.code = "UND_MOCK_ERR_MOCK_NOT_MATCHED";
       }
     };
@@ -17582,8 +17582,8 @@ var require_lib = __commonJS({
     var ExponentialBackoffCeiling = 10;
     var ExponentialBackoffTimeSlice = 5;
     var HttpClientError = class _HttpClientError extends Error {
-      constructor(message, statusCode) {
-        super(message);
+      constructor(message2, statusCode) {
+        super(message2);
         this.name = "HttpClientError";
         this.statusCode = statusCode;
         Object.setPrototypeOf(this, _HttpClientError.prototype);
@@ -17591,8 +17591,8 @@ var require_lib = __commonJS({
     };
     exports2.HttpClientError = HttpClientError;
     var HttpClientResponse = class {
-      constructor(message) {
-        this.message = message;
+      constructor(message2) {
+        this.message = message2;
       }
       readBody() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -18135,8 +18135,8 @@ var require_auth = __commonJS({
     };
     exports2.BasicCredentialHandler = BasicCredentialHandler;
     var BearerCredentialHandler = class {
-      constructor(token) {
-        this.token = token;
+      constructor(token2) {
+        this.token = token2;
       }
       // currently implements pre-authorization
       // TODO: support preAuth = false where it hooks on 401
@@ -18158,8 +18158,8 @@ var require_auth = __commonJS({
     };
     exports2.BearerCredentialHandler = BearerCredentialHandler;
     var PersonalAccessTokenCredentialHandler = class {
-      constructor(token) {
-        this.token = token;
+      constructor(token2) {
+        this.token = token2;
       }
       // currently implements pre-authorization
       // TODO: support preAuth = false where it hooks on 401
@@ -18228,11 +18228,11 @@ var require_oidc_utils = __commonJS({
         return new http_client_1.HttpClient("actions/oidc-client", [new auth_1.BearerCredentialHandler(_OidcClient.getRequestToken())], requestOptions);
       }
       static getRequestToken() {
-        const token = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
-        if (!token) {
+        const token2 = process.env["ACTIONS_ID_TOKEN_REQUEST_TOKEN"];
+        if (!token2) {
           throw new Error("Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable");
         }
-        return token;
+        return token2;
       }
       static getIDTokenUrl() {
         const runtimeUrl = process.env["ACTIONS_ID_TOKEN_REQUEST_URL"];
@@ -18765,33 +18765,33 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
       command_1.issue("echo", enabled ? "on" : "off");
     }
     exports2.setCommandEcho = setCommandEcho;
-    function setFailed(message) {
+    function setFailed(message2) {
       process.exitCode = ExitCode.Failure;
-      error(message);
+      error(message2);
     }
     exports2.setFailed = setFailed;
     function isDebug() {
       return process.env["RUNNER_DEBUG"] === "1";
     }
     exports2.isDebug = isDebug;
-    function debug(message) {
-      command_1.issueCommand("debug", {}, message);
+    function debug(message2) {
+      command_1.issueCommand("debug", {}, message2);
     }
     exports2.debug = debug;
-    function error(message, properties = {}) {
-      command_1.issueCommand("error", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    function error(message2, properties = {}) {
+      command_1.issueCommand("error", utils_1.toCommandProperties(properties), message2 instanceof Error ? message2.toString() : message2);
     }
     exports2.error = error;
-    function warning(message, properties = {}) {
-      command_1.issueCommand("warning", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    function warning(message2, properties = {}) {
+      command_1.issueCommand("warning", utils_1.toCommandProperties(properties), message2 instanceof Error ? message2.toString() : message2);
     }
     exports2.warning = warning;
-    function notice(message, properties = {}) {
-      command_1.issueCommand("notice", utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+    function notice(message2, properties = {}) {
+      command_1.issueCommand("notice", utils_1.toCommandProperties(properties), message2 instanceof Error ? message2.toString() : message2);
     }
     exports2.notice = notice;
-    function info(message) {
-      process.stdout.write(message + os.EOL);
+    function info(message2) {
+      process.stdout.write(message2 + os.EOL);
     }
     exports2.info = info;
     function startGroup(name) {
@@ -18979,13 +18979,13 @@ var require_utils3 = __commonJS({
     exports2.getApiBaseUrl = exports2.getProxyFetch = exports2.getProxyAgentDispatcher = exports2.getProxyAgent = exports2.getAuthString = void 0;
     var httpClient = __importStar(require_lib());
     var undici_1 = require_undici();
-    function getAuthString(token, options) {
-      if (!token && !options.auth) {
+    function getAuthString(token2, options) {
+      if (!token2 && !options.auth) {
         throw new Error("Parameter token or opts.auth is required");
-      } else if (token && options.auth) {
+      } else if (token2 && options.auth) {
         throw new Error("Parameters token and opts.auth may not both be specified");
       }
-      return typeof options.auth === "string" ? options.auth : `token ${token}`;
+      return typeof options.auth === "string" ? options.auth : `token ${token2}`;
     }
     exports2.getAuthString = getAuthString;
     function getProxyAgent(destinationUrl) {
@@ -19337,8 +19337,8 @@ var require_dist_node2 = __commonJS({
     function isKeyOperator(operator) {
       return operator === ";" || operator === "&" || operator === "?";
     }
-    function getValues(context, operator, key, modifier) {
-      var value = context[key], result = [];
+    function getValues(context2, operator, key, modifier) {
+      var value = context2[key], result = [];
       if (isDefined(value) && value !== "") {
         if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
           value = value.toString();
@@ -19402,7 +19402,7 @@ var require_dist_node2 = __commonJS({
         expand: expand.bind(null, template)
       };
     }
-    function expand(template, context) {
+    function expand(template, context2) {
       var operators = ["+", "#", ".", "/", ";", "?", "&"];
       template = template.replace(
         /\{([^\{\}]+)\}|([^\{\}]+)/g,
@@ -19416,7 +19416,7 @@ var require_dist_node2 = __commonJS({
             }
             expression.split(/,/g).forEach(function(variable) {
               var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
-              values.push(getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
+              values.push(getValues(context2, operator, tmp[1], tmp[2] || tmp[3]));
             });
             if (operator && operator !== "+") {
               var separator = ",";
@@ -19526,8 +19526,8 @@ var require_dist_node3 = __commonJS({
     "use strict";
     Object.defineProperty(exports2, "__esModule", { value: true });
     var Deprecation = class extends Error {
-      constructor(message) {
-        super(message);
+      constructor(message2) {
+        super(message2);
         if (Error.captureStackTrace) {
           Error.captureStackTrace(this, this.constructor);
         }
@@ -19655,8 +19655,8 @@ var require_dist_node4 = __commonJS({
     var logOnceCode = (0, import_once.default)((deprecation) => console.warn(deprecation));
     var logOnceHeaders = (0, import_once.default)((deprecation) => console.warn(deprecation));
     var RequestError = class extends Error {
-      constructor(message, statusCode, options) {
-        super(message);
+      constructor(message2, statusCode, options) {
+        super(message2);
         if (Error.captureStackTrace) {
           Error.captureStackTrace(this, this.constructor);
         }
@@ -19844,15 +19844,15 @@ var require_dist_node5 = __commonJS({
           throw error;
         else if (error.name === "AbortError")
           throw error;
-        let message = error.message;
+        let message2 = error.message;
         if (error.name === "TypeError" && "cause" in error) {
           if (error.cause instanceof Error) {
-            message = error.cause.message;
+            message2 = error.cause.message;
           } else if (typeof error.cause === "string") {
-            message = error.cause;
+            message2 = error.cause;
           }
         }
-        throw new import_request_error.RequestError(message, 500, {
+        throw new import_request_error.RequestError(message2, 500, {
           request: requestOptions
         });
       });
@@ -20082,43 +20082,43 @@ var require_dist_node7 = __commonJS({
     var REGEX_IS_INSTALLATION_LEGACY = /^v1\./;
     var REGEX_IS_INSTALLATION = /^ghs_/;
     var REGEX_IS_USER_TO_SERVER = /^ghu_/;
-    async function auth(token) {
-      const isApp = token.split(/\./).length === 3;
-      const isInstallation = REGEX_IS_INSTALLATION_LEGACY.test(token) || REGEX_IS_INSTALLATION.test(token);
-      const isUserToServer = REGEX_IS_USER_TO_SERVER.test(token);
+    async function auth(token2) {
+      const isApp = token2.split(/\./).length === 3;
+      const isInstallation = REGEX_IS_INSTALLATION_LEGACY.test(token2) || REGEX_IS_INSTALLATION.test(token2);
+      const isUserToServer = REGEX_IS_USER_TO_SERVER.test(token2);
       const tokenType = isApp ? "app" : isInstallation ? "installation" : isUserToServer ? "user-to-server" : "oauth";
       return {
         type: "token",
-        token,
+        token: token2,
         tokenType
       };
     }
-    function withAuthorizationPrefix(token) {
-      if (token.split(/\./).length === 3) {
-        return `bearer ${token}`;
+    function withAuthorizationPrefix(token2) {
+      if (token2.split(/\./).length === 3) {
+        return `bearer ${token2}`;
       }
-      return `token ${token}`;
+      return `token ${token2}`;
     }
-    async function hook(token, request, route, parameters) {
+    async function hook(token2, request, route, parameters) {
       const endpoint = request.endpoint.merge(
         route,
         parameters
       );
-      endpoint.headers.authorization = withAuthorizationPrefix(token);
+      endpoint.headers.authorization = withAuthorizationPrefix(token2);
       return request(endpoint);
     }
-    var createTokenAuth = function createTokenAuth2(token) {
-      if (!token) {
+    var createTokenAuth = function createTokenAuth2(token2) {
+      if (!token2) {
         throw new Error("[@octokit/auth-token] No token passed to createTokenAuth");
       }
-      if (typeof token !== "string") {
+      if (typeof token2 !== "string") {
         throw new Error(
           "[@octokit/auth-token] Token passed to createTokenAuth is not a string"
         );
       }
-      token = token.replace(/^(token|bearer) +/i, "");
-      return Object.assign(auth.bind(null, token), {
-        hook: hook.bind(null, token)
+      token2 = token2.replace(/^(token|bearer) +/i, "");
+      return Object.assign(auth.bind(null, token2), {
+        hook: hook.bind(null, token2)
       });
     };
   }
@@ -22305,7 +22305,7 @@ var require_dist_node9 = __commonJS({
       set(target, methodName, value) {
         return target.cache[methodName] = value;
       },
-      get({ octokit, scope, cache }, methodName) {
+      get({ octokit: octokit2, scope, cache }, methodName) {
         if (cache[methodName]) {
           return cache[methodName];
         }
@@ -22316,27 +22316,27 @@ var require_dist_node9 = __commonJS({
         const { endpointDefaults, decorations } = method;
         if (decorations) {
           cache[methodName] = decorate(
-            octokit,
+            octokit2,
             scope,
             methodName,
             endpointDefaults,
             decorations
           );
         } else {
-          cache[methodName] = octokit.request.defaults(endpointDefaults);
+          cache[methodName] = octokit2.request.defaults(endpointDefaults);
         }
         return cache[methodName];
       }
     };
-    function endpointsToMethods(octokit) {
+    function endpointsToMethods(octokit2) {
       const newMethods = {};
       for (const scope of endpointMethodsMap.keys()) {
-        newMethods[scope] = new Proxy({ octokit, scope, cache: {} }, handler);
+        newMethods[scope] = new Proxy({ octokit: octokit2, scope, cache: {} }, handler);
       }
       return newMethods;
     }
-    function decorate(octokit, scope, methodName, defaults, decorations) {
-      const requestWithDefaults = octokit.request.defaults(defaults);
+    function decorate(octokit2, scope, methodName, defaults, decorations) {
+      const requestWithDefaults = octokit2.request.defaults(defaults);
       function withDecorations(...args) {
         let options = requestWithDefaults.endpoint.merge(...args);
         if (decorations.mapToData) {
@@ -22348,12 +22348,12 @@ var require_dist_node9 = __commonJS({
         }
         if (decorations.renamed) {
           const [newScope, newMethodName] = decorations.renamed;
-          octokit.log.warn(
+          octokit2.log.warn(
             `octokit.${scope}.${methodName}() has been renamed to octokit.${newScope}.${newMethodName}()`
           );
         }
         if (decorations.deprecated) {
-          octokit.log.warn(decorations.deprecated);
+          octokit2.log.warn(decorations.deprecated);
         }
         if (decorations.renamedParameters) {
           const options2 = requestWithDefaults.endpoint.merge(...args);
@@ -22361,7 +22361,7 @@ var require_dist_node9 = __commonJS({
             decorations.renamedParameters
           )) {
             if (name in options2) {
-              octokit.log.warn(
+              octokit2.log.warn(
                 `"${name}" parameter is deprecated for "octokit.${scope}.${methodName}()". Use "${alias}" instead`
               );
               if (!(alias in options2)) {
@@ -22376,15 +22376,15 @@ var require_dist_node9 = __commonJS({
       }
       return Object.assign(withDecorations, requestWithDefaults);
     }
-    function restEndpointMethods(octokit) {
-      const api = endpointsToMethods(octokit);
+    function restEndpointMethods(octokit2) {
+      const api = endpointsToMethods(octokit2);
       return {
         rest: api
       };
     }
     restEndpointMethods.VERSION = VERSION;
-    function legacyRestEndpointMethods(octokit) {
-      const api = endpointsToMethods(octokit);
+    function legacyRestEndpointMethods(octokit2) {
+      const api = endpointsToMethods(octokit2);
       return {
         ...api,
         rest: api
@@ -22452,9 +22452,9 @@ var require_dist_node10 = __commonJS({
       response.data.total_count = totalCount;
       return response;
     }
-    function iterator(octokit, route, parameters) {
-      const options = typeof route === "function" ? route.endpoint(parameters) : octokit.request.endpoint(route, parameters);
-      const requestMethod = typeof route === "function" ? route : octokit.request;
+    function iterator(octokit2, route, parameters) {
+      const options = typeof route === "function" ? route.endpoint(parameters) : octokit2.request.endpoint(route, parameters);
+      const requestMethod = typeof route === "function" ? route : octokit2.request;
       const method = options.method;
       const headers = options.headers;
       let url = options.url;
@@ -22486,19 +22486,19 @@ var require_dist_node10 = __commonJS({
         })
       };
     }
-    function paginate(octokit, route, parameters, mapFn) {
+    function paginate(octokit2, route, parameters, mapFn) {
       if (typeof parameters === "function") {
         mapFn = parameters;
         parameters = void 0;
       }
       return gather(
-        octokit,
+        octokit2,
         [],
-        iterator(octokit, route, parameters)[Symbol.asyncIterator](),
+        iterator(octokit2, route, parameters)[Symbol.asyncIterator](),
         mapFn
       );
     }
-    function gather(octokit, results, iterator2, mapFn) {
+    function gather(octokit2, results, iterator2, mapFn) {
       return iterator2.next().then((result) => {
         if (result.done) {
           return results;
@@ -22513,7 +22513,7 @@ var require_dist_node10 = __commonJS({
         if (earlyExit) {
           return results;
         }
-        return gather(octokit, results, iterator2, mapFn);
+        return gather(octokit2, results, iterator2, mapFn);
       });
     }
     var composePaginateRest = Object.assign(paginate, {
@@ -22760,10 +22760,10 @@ var require_dist_node10 = __commonJS({
         return false;
       }
     }
-    function paginateRest(octokit) {
+    function paginateRest(octokit2) {
       return {
-        paginate: Object.assign(paginate.bind(null, octokit), {
-          iterator: iterator.bind(null, octokit)
+        paginate: Object.assign(paginate.bind(null, octokit2), {
+          iterator: iterator.bind(null, octokit2)
         })
       };
     }
@@ -22824,9 +22824,9 @@ var require_utils4 = __commonJS({
       }
     };
     exports2.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(exports2.defaults);
-    function getOctokitOptions(token, options) {
+    function getOctokitOptions(token2, options) {
       const opts = Object.assign({}, options || {});
-      const auth = Utils.getAuthString(token, opts);
+      const auth = Utils.getAuthString(token2, opts);
       if (auth) {
         opts.auth = auth;
       }
@@ -22877,68 +22877,52 @@ var require_github = __commonJS({
     var Context = __importStar(require_context());
     var utils_1 = require_utils4();
     exports2.context = new Context.Context();
-    function getOctokit(token, options, ...additionalPlugins) {
+    function getOctokit2(token2, options, ...additionalPlugins) {
       const GitHubWithPlugins = utils_1.GitHub.plugin(...additionalPlugins);
-      return new GitHubWithPlugins((0, utils_1.getOctokitOptions)(token, options));
+      return new GitHubWithPlugins((0, utils_1.getOctokitOptions)(token2, options));
     }
-    exports2.getOctokit = getOctokit;
+    exports2.getOctokit = getOctokit2;
   }
 });
 
+// index.js
+var import_core = __toESM(require_core());
+var import_github = __toESM(require_github());
+
 // src/main.js
-var main_exports = {};
-__export(main_exports, {
-  default: () => main_default
-});
-async function run() {
+async function run(core2, octokit2, context2, message2) {
   try {
-    const token = import_core.default.getInput("token", { required: true });
-    const bot_mode = import_core.default.getBooleanInput("bot-mode", { required: false });
-    const message = import_core.default.getInput("message", { required: true });
-    const context = import_github.default.context;
-    const pr_number = context.payload.pull_request.number;
-    const octokit = import_github.default.getOctokit(token);
-    if (bot_mode) {
-      await octokit.request.defaults({
-        headers: {
-          authorization: `token ${token}`
-          // eslint-disable-line no-template-curly-in-string
-        }
-      });
-    }
-    import_core.default.info(`==> Approved checking on PR#${pr_number} ...`);
-    const reviews = await octokit.rest.pulls.listReviews({
-      ...context.repo,
-      pull_number: pr_number
+    core2.info(`==> Disapproving Pull Request`);
+    const reviews = await octokit2.rest.pulls.listReviews({
+      ...context2.repo,
+      pull_number: context2.payload.pull_number
     });
     for (const review of reviews.data) {
       if (review.state != "APPROVED") {
         continue;
       }
-      import_core.default.info(`==> Dissmissing Approvvals in PR #${review.user.login}`);
-      octokit.rest.pulls.dismissReview({
-        ...context.repo,
-        pull_number: pr_number,
-        review_id: review.id,
-        message
+      core2.info(`==> Catch Approved Review id.`);
+      core2.info(`==> Disapproving...`);
+      await octokit2.rest.pulls.dismissReview({
+        ...context2.repo,
+        number: review.id,
+        message: message2
       });
     }
-  } catch (error) {
-    import_core.default.setFailed(error.message);
+  } catch (e) {
+    core2.setFailed(`==> ${e.message}`);
   }
 }
-var import_core, import_github, main_default;
-var init_main = __esm({
-  "src/main.js"() {
-    import_core = __toESM(require_core());
-    import_github = __toESM(require_github());
-    main_default = run();
-  }
-});
 
 // index.js
-var { run: run2 } = (init_main(), __toCommonJS(main_exports));
-run2();
+var token = import_core.default.getInput("token", { required: true });
+var octokit = (0, import_github.getOctokit)(token);
+var message = import_core.default.getInput("message", { reqruied: false });
+try {
+  run(import_core.default, octokit, import_github.context, message);
+} catch (e) {
+  import_core.default.setFailed(`==> ${e.message}`);
+}
 /*! Bundled license information:
 
 undici/lib/fetch/body.js:
