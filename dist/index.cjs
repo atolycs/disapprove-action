@@ -22891,11 +22891,12 @@ var import_github = __toESM(require_github(), 1);
 
 // src/main.js
 async function run(core2, octokit2, context2, message2) {
+  const pr_num = context2.payload.pull_request.number;
   try {
     core2.info(`==> Disapproving Pull Request`);
     const reviews = await octokit2.rest.pulls.listReviews({
       ...context2.repo,
-      pull_number: context2.payload.pull_request.number
+      pull_number: pr_num
     });
     for (const review of reviews.data) {
       if (review.state != "APPROVED") {
@@ -22905,7 +22906,8 @@ async function run(core2, octokit2, context2, message2) {
       core2.info(`==> Disapproving...`);
       await octokit2.rest.pulls.dismissReview({
         ...context2.repo,
-        number: review.id,
+        pull_number: pr_num,
+        review_id: review.id,
         message: message2
       });
     }
