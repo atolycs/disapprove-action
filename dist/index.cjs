@@ -22895,7 +22895,7 @@ async function run(core2, octokit2, context2, message2) {
     core2.info(`==> Disapproving Pull Request`);
     const reviews = await octokit2.rest.pulls.listReviews({
       ...context2.repo,
-      pull_number: context2.payload.pull_number
+      pull_number: context2.payload.pull_request.number
     });
     for (const review of reviews.data) {
       if (review.state != "APPROVED") {

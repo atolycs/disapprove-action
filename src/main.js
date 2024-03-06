@@ -14,7 +14,7 @@ export async function run(core, octokit, context, message) {
     core.info(`==> Disapproving Pull Request`)
     const reviews = await octokit.rest.pulls.listReviews({
       ...context.repo,
-      pull_number: context.payload.pull_number
+      pull_number: context.payload.pull_request.number
     })
 
     for ( const review of reviews.data ) {
